@@ -27,7 +27,7 @@ pipeline {
         stage ('dockerimagetag'){
             steps {
                 sh "docker tag jenkins-ci:latest $IMAGE_ECR_REPO:latest"
-                sh "docker tag imageversion $IMAGE_ECR_REPO:v1.$BUILD_NUMBER"
+                sh "docker tag jenkins-ci:latest $IMAGE_REPO:v1.$BUILD_NUMBER"
             } 
  }
         stage ('pushImage') {
