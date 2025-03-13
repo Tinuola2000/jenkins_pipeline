@@ -3,7 +3,7 @@ pipeline {
 
     environment {
      AWS_REGION = 'us-east-1'
-     IMAGE_REPO = '503561417595.dkr.ecr.us-east-1.amazonaws.com/jenkins-ci'
+     IMAGE_ECR_REPO = '503561417595.dkr.ecr.us-east-1.amazonaws.com/jenkins-ci'
      ECR_REPO = '503561417595.dkr.ecr.us-east-1.amazonaws.com'
     }
     stages {
@@ -26,7 +26,7 @@ pipeline {
 } 
         stage ('dockerimagetag'){
             steps {
-                sh "docker tag jenkins-cijenkins-ci:latest $IMAGE_ECR_REPO:latest"
+                sh "docker tag jenkins-ci:latest $IMAGE_ECR_REPO:latest"
                 sh "docker tag imageversion $IMAGE_ECR_REPO:v1.$BUILD_NUMBER"
             } 
  }
