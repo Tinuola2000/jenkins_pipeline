@@ -1,20 +1,20 @@
-Pipeline {
+pipeline {
     agent any
-stages {
-    stage ('Clone'){
-        steps { 
-              sh 'echo' "clone"
+    stages {
+        stage ('CodeScan'){
+            steps { 
+                 sh 'trivy --version'
            }
-       }
-    stage ('test') {
-        steps {
-            sh 'echo "test"'
+ }
+        stage ('dockerimagebuild'){
+           steps {
+             sh 'docker -v'
         }     
 }
-    stage ('createfile') {
-         steps {
-             sh 'touch text-$BUILD_ID' 
-           }
-       }
+        stage ('pushImage') {
+            steps {
+              sh 'touch text-$BUILD_ID'  
+          }
+       } 
    }
 }
