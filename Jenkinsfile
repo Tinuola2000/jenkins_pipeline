@@ -13,7 +13,7 @@ pipeline {
 }
         stage ('pushImage') {
             steps {
-              sh 'touch text-$BUILD_ID'  
+              sh 'docker ps'  
           }
        } 
    }
